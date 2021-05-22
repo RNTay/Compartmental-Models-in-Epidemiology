@@ -23,7 +23,7 @@ parameters <- c(beta = 0.7,  # beta = daily infection rate
 
 
 # TIMESTEPS:
-times <- seq(from = 0, to = 90, by = 0.1)
+t <- seq(from = 0, to = 90, by = 0.1)
 
 
 # SIR MODEL FUNCTION:
@@ -31,17 +31,17 @@ sir_model <- function(time, state, parameters) {
   with(as.list(c(state, parameters)), {
     N <- S+I+R
     lambda <- beta * I/N  # lambda = force of infection
-    dS <- -lambda * S
-    dI <- lambda * S - gamma * I
-    dR <- gamma * I
-    return(list(c(dS, dI, dR)))
+    dS_dt <- -lambda * S
+    dI_dt <- lambda * S - gamma * I
+    dR_dt <- gamma * I
+    return(list(c(dS_dt, dI_dt, dR_dt)))
   })
 }
 
 
 # MODEL OUTPUT (solving the differential equations):
 output <- as.data.frame(ode(y = initial_state_values,
-                            times = times,
+                            times = t,
                             func = sir_model,
                             parms = parameters))
 
