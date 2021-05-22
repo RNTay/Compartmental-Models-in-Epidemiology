@@ -1,7 +1,7 @@
 # VBD = Vector-Borne Disease
 
 # MODEL ASSUMPTIONS
-# Vectors are mosquitoes in this model, and hosts are humans.
+# Vectors are mosquitoes and hosts are humans in this code
 # There are no births, background deaths or disease-induced mortality in the host population.
 # Vectors enter the population and die at the same rate.
 # Vector survival is independent of infection status.
@@ -29,7 +29,7 @@ pv <- 0.057/100  # initial prevalence of infection in vector population
 initial_state_values <- c(Sh = Nh - ph*Nh, Ih = ph*Nh, Rh = 0,
                           Sv = Nv - pv*Nv, Iv = pv*Nv)
 
-parameters <- c(a = 1,  # biting rate
+parameters <- c(a = 1,  # mosquito biting rate (per day)
                 bv = 0.4,  # probability of vector getting infected by a host
                 bh = 0.4,  # probability of host getting infected by a vector
                 mu_v = 0.25,  # death rate of vectors (per day)
