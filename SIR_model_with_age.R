@@ -31,7 +31,7 @@ parameters <- c(b = 0.05,     # probability of infection per contact
                 gamma = 1/5)  # rate of recovery
 
 # Times
-times <- seq(from = 0, to = 90, by = 0.1)
+t <- seq(from = 0, to = 90, by = 0.1)
 
 
 # MODEL FUNCTION
@@ -52,12 +52,12 @@ sir_age_model <- function(time, state, parameters) {
     
     # The differential equations
     # Rate of change in children:
-    dS <- -lambda * S             
-    dI <- lambda * S - gamma * I
-    dR <- gamma * I
+    dS_dt <- -lambda * S             
+    dI_dt <- lambda * S - gamma * I
+    dR_dt <- gamma * I
     
     # Output
-    return(list(c(dS, dI, dR))) 
+    return(list(c(dS_dt, dI_dt, dR_dt))) 
   })
 }
 
@@ -65,14 +65,14 @@ sir_age_model <- function(time, state, parameters) {
 # MODEL OUTPUT
 
 output <- as.data.frame(ode(y = initial_state_values, 
-                            times = times, 
+                            times = t, 
                             func = sir_age_model,
                             parms = parameters))
 
 output_long <- melt(as.data.frame(output), id = "time")
 
 ggplot(data = output_long,                                               
-       aes(x = time, y = value, colour = variable, group = variable)) +  
+       aes(x = time, y = value, colour = variable, group = variable)) + 
   geom_line() +                                                          
   xlab("Time (days)")+                                                   
   ylab("Number of people") +                                
