@@ -22,7 +22,7 @@ parameters <- c(beta = 0.3885,  # infection rate
 
 
 # TIMESTEPS
-times <- seq(from = 0,
+t <- seq(from = 0,
              to = 365,
              by = 1)
 
@@ -32,20 +32,20 @@ SEIRD_model <- function(time, state, parameters) {
   with(as.list(c(state, parameters)), {
     N <- S+E+I+R
     lambda <- beta*I/N
-    dS <- -lambda * S
-    dE <- lambda*S - sigma*E
-    dI <- sigma*E - gamma*I - mu*I
-    dR <- gamma*I
-    dD <- mu*I
+    dS_dt <- -lambda * S
+    dE_dt <- lambda*S - sigma*E
+    dI_dt <- sigma*E - gamma*I - mu*I
+    dR_dt <- gamma*I
+    dD_dt <- mu*I
     
-    return(list(c(dS, dE, dI, dR, dD)))
+    return(list(c(dS_dt, dE_dt, dI_dt, dR_dt, dD_dt)))
   })
 }
 
 
 # MODEL OUTPUT
 output <- as.data.frame(ode(y = initial_state_values,
-                            times = times,
+                            times = t,
                             func = SEIRD_model,
                             parms = parameters))
 
