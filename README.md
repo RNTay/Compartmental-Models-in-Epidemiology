@@ -1,3 +1,3 @@
-# R-Snippets
+# Compartmental-Models-in-Epidemiology
 
-R code snippets for me to copy & paste into other codes.
+Code to model infectious diseases.
