@@ -1,7 +1,7 @@
 # VBD = Vector-Borne Disease
 
 # MODEL ASSUMPTIONS
-# Vectors are mosquitoes and hosts are humans in this code
+# Vectors are mosquitoes and hosts are humans in this code.
 # There are no births, background deaths or disease-induced mortality in the host population.
 # Vectors enter the population and die at the same rate.
 # Vector survival is independent of infection status.
