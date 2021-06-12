@@ -1,10 +1,3 @@
-# SIR = Susceptible, Infectious, Recovered
-# This model assumes that the population is:
-# 1. homogeneous
-# 2. well-mixed
-# i.e. all susceptible individuals face the same risk of infection per unit time.
-
-
 # LOAD THE PACKAGES:
 library(deSolve)
 library(reshape2)
