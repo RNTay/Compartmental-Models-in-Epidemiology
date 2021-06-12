@@ -1,5 +1,3 @@
-# SEIRD = Susceptible, Exposed, Infectious, Recovered, Deceased
-
 # PACKAGES
 library(deSolve)
 library(reshape2)
